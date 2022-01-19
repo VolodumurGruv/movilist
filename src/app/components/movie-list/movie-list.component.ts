@@ -1,4 +1,3 @@
-import { LiveAnnouncer } from '@angular/cdk/a11y';
 import {
   AfterViewInit,
   Component,
@@ -33,10 +32,7 @@ export class MovieListComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(
-    private movieService: MovieListService,
-    private _liveAnnouncer: LiveAnnouncer
-  ) {}
+  constructor(private movieService: MovieListService) {}
 
   ngOnInit(): void {
     this.getMovie();
@@ -67,14 +63,6 @@ export class MovieListComponent implements OnInit, OnDestroy, AfterViewInit {
     }
   }
 
-  announceSortChange(sortState: Sort) {
-    if (sortState.direction) {
-      this._liveAnnouncer.announce(`Sorted${sortState.direction}ending`);
-    } else {
-      this._liveAnnouncer.announce('Sorting cleared');
-    }
-  }
-
   sortMovies(event: any) {
     const sortMovies: any = this.movies.slice();
     let sortedMovies = [];
@@ -90,12 +78,13 @@ export class MovieListComponent implements OnInit, OnDestroy, AfterViewInit {
         case 'latest year':
           return this.compare(+a.year, +b.year, false);
         case 'unsort':
-          return this.getMovie();
+          return new MatTableDataSource(this.movies);
         default:
           return 0;
       }
     });
     this.dataSource = new MatTableDataSource(sortedMovies);
+    this.dataSource.paginator = this.paginator;
   }
 
   private compare(a: string | number, b: string | number, isAbc: boolean) {

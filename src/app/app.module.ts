@@ -16,9 +16,10 @@ import { SortComponent } from './components/sort/sort.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
-  declarations: [AppComponent, MovieListComponent, SortComponent],
+  declarations: [AppComponent, MovieListComponent, SortComponent, AlertComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
