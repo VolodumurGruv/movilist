@@ -2,7 +2,7 @@
 
 for running the Angular example you should open folder movielist in your console and type, npm i then type npm start it will be running in dev mode on the port 3030 you will see the error message if you will not run NodeJS example
 
-for running NodeJS example open folder movielist/server and run another one console and type `npm i` then type `tsc --init` then type `npm start` it will be running on the port 3031
+for running NodeJS example open folder movielist/server and run another one console and type `npm i` then type `npm start` it will be running on the port 3031
 
 You may be should install something from my dev dependencies
 ` "devDependencies": { "nodemon": "^2.0.15", "tslint": "^6.1.3", "typescript": "^4.5.4" }`
