@@ -1,0 +1,12 @@
+<div class="sort">
+  <mat-form-field appearance="fill">
+    <mat-label>Sort by</mat-label>
+    <select matNativeControl name="sort" (change)="takenSortEvent($event)">
+      <option [ngValue]="sort">unsort</option>
+      <option [ngValue]="sort">name from A to Z</option>
+      <option [ngValue]="sort">name from Z to A</option>
+      <option [ngValue]="sort">earliest year</option>
+      <option [ngValue]="sort">latest year</option>
+    </select>
+  </mat-form-field>
+</div>

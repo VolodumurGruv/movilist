@@ -12,20 +12,28 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { SortComponent } from './components/sort/sort.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, MovieListComponent],
+  declarations: [AppComponent, MovieListComponent, SortComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CommonModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,
     MatPaginatorModule,
     MatSortModule,
+    MatSelectModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

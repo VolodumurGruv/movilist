@@ -1,14 +1,22 @@
 <div class="container">
-  <mat-form-field>
-    <mat-label>Search</mat-label>
-    <input
-      class="search"
-      matInput
-      type="text"
-      (keyup)="applySearch($event)"
-      #search
-    />
-  </mat-form-field>
+  <div class="action">
+    <div>
+      <mat-form-field>
+        <mat-label>Search <mat-icon>search</mat-icon></mat-label>
+        <input
+          class="search"
+          matInput
+          type="text"
+          (keyup)="applySearch($event)"
+          #search
+        />
+      </mat-form-field>
+    </div>
+    <div>
+      <app-sort (sortEvent)="sortMovies($event)"></app-sort>
+    </div>
+  </div>
+
   <div class="table">
     <mat-paginator
       class="table_paginator"
@@ -16,6 +24,7 @@
       aria-label="Select page of users"
     >
     </mat-paginator>
+
     <table class="table_body" mat-table [dataSource]="dataSource" matSort>
       <!-- id column -->
       <ng-container matColumnDef="id">

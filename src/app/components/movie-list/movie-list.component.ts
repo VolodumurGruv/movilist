@@ -20,6 +20,7 @@ import { MovieListService } from 'src/app/services/movie-list.service.ts.service
 })
 export class MovieListComponent implements OnInit, OnDestroy, AfterViewInit {
   public moviesSub!: Subscription;
+  public movies!: Movie[];
   public dataSource!: MatTableDataSource<Movie>;
   public displayedColumns: string[] = [
     'id',
@@ -42,7 +43,8 @@ export class MovieListComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    setTimeout(() => {
+    let timeClear = setTimeout(() => {
+      clearTimeout(timeClear);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     }, 500);
@@ -51,6 +53,7 @@ export class MovieListComponent implements OnInit, OnDestroy, AfterViewInit {
   getMovie(): void {
     this.moviesSub = this.movieService.getMovies().subscribe((res: Movie[]) => {
       this.dataSource = new MatTableDataSource(res);
+      this.movies = res;
     });
   }
 
@@ -70,6 +73,33 @@ export class MovieListComponent implements OnInit, OnDestroy, AfterViewInit {
     } else {
       this._liveAnnouncer.announce('Sorting cleared');
     }
+  }
+
+  sortMovies(event: any) {
+    const sortMovies: any = this.movies.slice();
+    let sortedMovies = [];
+
+    sortedMovies = sortMovies.sort((a: any, b: any) => {
+      switch (event) {
+        case 'name from A to Z':
+          return this.compare(a.name, b.name, true);
+        case 'name from Z to A':
+          return this.compare(a.name, b.name, false);
+        case 'earliest year':
+          return this.compare(+a.year, +b.year, true);
+        case 'latest year':
+          return this.compare(+a.year, +b.year, false);
+        case 'unsort':
+          return this.getMovie();
+        default:
+          return 0;
+      }
+    });
+    this.dataSource = new MatTableDataSource(sortedMovies);
+  }
+
+  private compare(a: string | number, b: string | number, isAbc: boolean) {
+    return (a < b ? -1 : 1) * (isAbc ? 1 : -1);
   }
 
   ngOnDestroy(): void {
