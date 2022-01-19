@@ -1,0 +1,40 @@
+body {
+  background-color: rgb(94, 110, 121);
+}
+
+.container {
+  font-size: 16px;
+  margin: 1rem;
+  color: white;
+}
+
+mat-label {
+  color: white;
+}
+
+.table {
+  &_paginator {
+    font-size: 16px;
+    color: blanchedalmond;
+    background-color: rgba(191, 211, 224, 0.2);
+  }
+
+  [pageSizeOptions] {
+    color: red;
+  }
+  &_body {
+    width: 100%;
+    background-color: rgba(191, 211, 224, 0.2);
+
+    th {
+      color: black;
+      font-size: 24px;
+      font-weight: 500;
+    }
+
+    td {
+      font-size: 20px;
+      font-weight: 400;
+    }
+  }
+}
