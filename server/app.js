@@ -3,10 +3,7 @@ const app = express();
 const port = process.env.PORT || 3031;
 const movies = require("./helpers/getMovie");
 
-
-
 app.get("/", (req, res) => {
-  console.log(movies);
   res.status(200).send(movies);
 });
 
