@@ -6,7 +6,6 @@ const app: Express = express();
 const port = process.env.PORT || 3031;
 
 app.get('/', (req: Request, res: Response) => {
-  console.log(movies);
   res.status(200).send(movies.movies);
 });
 
