@@ -24,6 +24,7 @@ const movies = __importStar(require("./utils/getMovie"));
 const app = express();
 const port = process.env.PORT || 3031;
 app.get('/', (req, res) => {
-    res.status(200).send(movies);
+    console.log(movies);
+    res.status(200).send(movies.movies);
 });
 app.listen(port, () => console.log(`Server is running on port ${port}`));
