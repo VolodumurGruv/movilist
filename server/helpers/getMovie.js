@@ -2,7 +2,6 @@ const path = require("path");
 const fs = require("fs");
 const csv = require("csv-parser");
 const movies = [];
-const movies1 = {};
 
 //fs
 //  .createReadStream(path.join(__dirname, "../../movies/movies.csv"))
@@ -24,9 +23,9 @@ fs.readFile(
     const body = getValuesFromBuffer(res);
 
     // console.log(nextChunk(header, body));
-    movies.push(nextChunk(header, body));
+    nextChunk(header, body);
 
-    // console.log(movies);
+    console.log(movies);
   }
 );
 
@@ -42,9 +41,19 @@ function getValuesFromBuffer(str) {
 }
 
 function nextChunk(arr1, arr2) {
+  // arr2.splice(-1);
+  // while (arr2.length - 1) {
+  //   const tempArr = arr2.splice(0, arr1.length);
+  //   let obj = {};
+
+  //   for (let i = 0; i < arr1.length; i++) {
+  //     obj[arr1[i]] = tempArr[i];
+  //   }
+  //   movies.push(obj);
+  // }
   const tempArr = arr2.splice(0, arr1.length);
   let obj = {};
-  console.log(arr2.length <= 0);
+  
   if (arr2.length <= 0) {
     console.log("work");
     return movies;
