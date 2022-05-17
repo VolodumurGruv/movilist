@@ -24,8 +24,6 @@ fs.readFile(
 
     // console.log(nextChunk(header, body));
     nextChunk(header, body);
-
-    console.log(movies);
   }
 );
 
@@ -53,7 +51,7 @@ function nextChunk(arr1, arr2) {
   // }
   const tempArr = arr2.splice(0, arr1.length);
   let obj = {};
-  
+
   if (arr2.length <= 0) {
     console.log("work");
     return movies;
